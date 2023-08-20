@@ -25,8 +25,7 @@ function openWebsocket () {
     writeToScreen('DISCONNECTED')
   }
   websocket.onmessage = function (evt) {
-    writeToScreen(
-      '<span style="color: blue;">' + evt.data + '</span>')
+    writeToScreen(evt.data)
   }
   websocket.onerror = function (evt) {
     writeToScreen(
