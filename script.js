@@ -58,9 +58,12 @@ window.addEventListener('beforeunload', () => {
 })
 
 btnSend.addEventListener('click', () => {
-  const message = input.value
-  writeToScreen(message, true)
-  websocket.send(message)
+  const message = input.value.trim()
+  if (message !== '') {
+    writeToScreen(message, true)
+    websocket.send(message)
+    input.value = ''
+  }
 })
 
 locationButton.addEventListener('click', () => {
