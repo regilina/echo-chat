@@ -57,7 +57,15 @@ window.addEventListener('beforeunload', () => {
   }
 })
 
-btnSend.addEventListener('click', () => {
+input.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    sendMessage()
+  }
+})
+
+btnSend.addEventListener('click', sendMessage)
+
+function sendMessage () {
   const message = input.value.trim()
   if (isNaN(message) || message === '') {
     writeToScreen('Введите число')
@@ -66,7 +74,7 @@ btnSend.addEventListener('click', () => {
     writeToScreen('Ваша ставка в час: ' + Math.floor(message / (22 * 8)))
     input.value = ''
   }
-})
+}
 
 locationButton.addEventListener('click', () => {
   getLocation()
