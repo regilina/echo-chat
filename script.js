@@ -22,7 +22,7 @@ function writeToScreen (message, isSent = false) {
 function openWebsocket () {
   websocket = new WebSocket(wsUrl)
   websocket.onclose = function (evt) {
-    writeToScreen('DISCONNECTED', true)
+    writeToScreen('DISCONNECTED')
   }
   websocket.onmessage = function (evt) {
     writeToScreen(evt.data)
@@ -44,7 +44,7 @@ function getLocation () {
     navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords
       const locationURL = `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}#map=16/${latitude}/${longitude}`
-      writeToScreen(`<a href="${locationURL}" target="_blank">Моя геолокация</a>`, true)
+      writeToScreen(`<a href="${locationURL}" target="_blank">Моя геолокация</a>`)
     })
   } else {
     alert('Геолокация недоступна.')
@@ -60,10 +60,10 @@ window.addEventListener('beforeunload', () => {
 btnSend.addEventListener('click', () => {
   const message = input.value.trim()
   if (isNaN(message) || message === '') {
-    writeToScreen('Введите число', true)
+    writeToScreen('Введите число')
     input.value = ''
   } else {
-    writeToScreen('Ваша ставка в час: ' + Math.floor(message / (22 * 8)), true)
+    writeToScreen('Ваша ставка в час: ' + Math.floor(message / (22 * 8)))
     input.value = ''
   }
 })
