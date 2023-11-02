@@ -60,8 +60,8 @@ window.addEventListener('beforeunload', () => {
 btnSend.addEventListener('click', () => {
   const message = input.value.trim()
   if (message !== '') {
-    writeToScreen(message, true)
-    websocket.send(message)
+    writeToScreen('Ваша ставка в час: ' + Math.floor(message / (22 * 8)), true)
+
     input.value = ''
   }
 })
