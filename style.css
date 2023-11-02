@@ -1,10 +1,20 @@
 .chat-container {
   width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .btn {
   background-color: powderblue;
   border: none;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  width: 100%;
 }
 
 #message-input, .btn {
@@ -14,7 +24,6 @@
 
 #message-input {
   border: solid 2px powderblue;
-  width: 200px;
 }
 
 .headline {
@@ -29,13 +38,13 @@
 }
 
 .sent-message {
-  background-color: lightgreen;
+  background-color: powderblue;
   text-align: right;
   margin-left: auto;
 }
 
 .response-message {
-  background-color: lightblue;
+  background-color: powderblue;
   text-align: left;
   margin-right: auto;
 }

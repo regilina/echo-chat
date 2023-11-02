@@ -22,7 +22,7 @@ function writeToScreen (message, isSent = false) {
 function openWebsocket () {
   websocket = new WebSocket(wsUrl)
   websocket.onclose = function (evt) {
-    writeToScreen('DISCONNECTED')
+    writeToScreen('DISCONNECTED', true)
   }
   websocket.onmessage = function (evt) {
     writeToScreen(evt.data)
@@ -59,9 +59,11 @@ window.addEventListener('beforeunload', () => {
 
 btnSend.addEventListener('click', () => {
   const message = input.value.trim()
-  if (message !== '') {
+  if (isNaN(message) || message === '') {
+    writeToScreen('Введите число', true)
+    input.value = ''
+  } else {
     writeToScreen('Ваша ставка в час: ' + Math.floor(message / (22 * 8)), true)
-
     input.value = ''
   }
 })
